@@ -20,6 +20,7 @@ const LoginForm = () => {
   const { username, email, password, login } = useAuthStore();
 
   const onSubmit = (data:any) => { //TODO - Pass data as arg and use inside the onSubmit
+    // TODO - change the any for above
     console.log(data)
     // Call your login function with the form data
     // updateField('username', data.username);

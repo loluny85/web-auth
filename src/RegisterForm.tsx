@@ -25,6 +25,7 @@ const RegisterForm = () => {
     const { username, email, password, country, register: registerUser } = useAuthStore();
   
     const onSubmit = (data: any) => {
+      // TODO - change the any for above
       console.log(data)
       // updateField('username', data.username);
       // updateField('email', data.email);

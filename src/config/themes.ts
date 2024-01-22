@@ -1,30 +1,30 @@
-// type ThemeKey = 'default' | 'en' | 'fr';
+// config/themes.ts
 
-// type Theme = {
-//   primaryColor: string;
-//   secondaryColor: string;
-// };
+export type ThemeKey = 'default' | 'en' | 'fr';
 
-// type TThemesType = Record<ThemeKey, Theme>;
+export type Theme = {
+  primaryColor: string;
+  secondaryColor: string;
+};
 
-const themes: any = {
-    default: {
-      primaryColor: 'blue',
-      secondaryColor: 'white',
-      // other styles...
-    },
-    en: {
-      primaryColor: 'blue',
-      secondaryColor: 'white',
-      // other styles...
-    },
-    fr: {
-      primaryColor: 'red',
-      secondaryColor: 'blue',
-      // other styles...
-    },
-    // define themes for other countries...
-  };
-  
-  export default themes;
-  
+type TThemesType = {
+  [key in ThemeKey]: Theme;
+};
+
+// Themes object containing styles for different themes.
+const themes: TThemesType = {
+  default: {
+    primaryColor: 'blue',
+    secondaryColor: 'white',
+  },
+  en: {
+    primaryColor: 'blue',
+    secondaryColor: 'white',
+  },
+  fr: {
+    primaryColor: 'red',
+    secondaryColor: 'blue',
+  },
+};
+
+export default themes;

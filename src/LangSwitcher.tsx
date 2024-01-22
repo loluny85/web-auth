@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { IoIosGlobe } from "react-icons/io";
 import useThemeStore from './store/useThemeStore';
+import {ThemeKey} from './config/themes';
 
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const {setTheme} = useThemeStore()
 
-  const changeLanguage = (lng:string) => {
+  const changeLanguage = (lng:ThemeKey) => {
     console.log(lng)
     i18n.changeLanguage(lng);
     setTheme(lng)
@@ -15,7 +16,7 @@ function LanguageSwitcher() {
   const languageOptions = [
     { code: 'en', label: 'English' },
     { code: 'fr', label: 'Français' },
-    // Add more languages as needed
+    // TODO - Add more languages as needed
   ];
 
   return (
@@ -25,7 +26,7 @@ function LanguageSwitcher() {
     </label>
       <select
         id="language"
-        onChange={(e) => changeLanguage(e.target.value)}
+        onChange={(e) => changeLanguage(e.target.value as ThemeKey)}
         value={i18n.language}
       >
         {languageOptions.map((option) => (
