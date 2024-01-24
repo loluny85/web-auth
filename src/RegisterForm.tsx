@@ -3,6 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAuthStore } from './store/useAuthStore'; // Import your Zustand store
 import { validations } from './config/config';
+import {createUserWithEmailAndPassword} from 'firebase/auth'
+import {auth} from '../firebase'
 
 const schema = z.object({
   username: z.string(),
@@ -24,14 +26,14 @@ const RegisterForm = () => {
   
     const { username, email, password, country, register: registerUser } = useAuthStore();
   
-    const onSubmit = (data: any) => {
-      // TODO - change the any for above
-      console.log(data)
-      // updateField('username', data.username);
-      // updateField('email', data.email);
-      // updateField('password', data.password);
-      // updateField('country', data.country);
-      registerUser();
+    const onSubmit = async (data: any) => {
+      try {
+        const response = await createUserWithEmailAndPassword(auth, data.email, data.password);
+        console.log(response);
+    } catch(error) {
+        console.log('reg err - ', error)
+    }   
+      // registerUser();
     };
   
     return (

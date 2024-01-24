@@ -8,7 +8,6 @@ function LanguageSwitcher() {
   const {setTheme} = useThemeStore()
 
   const changeLanguage = (lng:ThemeKey) => {
-    console.log(lng)
     i18n.changeLanguage(lng);
     setTheme(lng)
   };

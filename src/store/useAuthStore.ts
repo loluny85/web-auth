@@ -18,7 +18,7 @@ const useAuthStore = create<TState>(persist((set) => ({
   password: '',
   country: '',
   register: () => {
-    console.log('Registration logic:');
+    // console.log('Registration logic:');
   },
   login: () => {
     set({
