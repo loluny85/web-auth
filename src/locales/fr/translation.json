@@ -3,11 +3,17 @@
   "userNameLong": "Nom d'utilisateur trop court",
   "userNameIncorrectFormat": "Nom d'utilisateur incorrect",
   "username": "Nom d'utilisateur",
-  "email": "Email",
+  "email": "Courriel",
   "password": "Mot de passe",
+  "country": "Pays",
+  "selectCountry": "Sélectionner le pays",
   "register": "S'inscrire",
   "login": "Se connecter",
   "passwordForgot": "Mot de passe oublié",
   "accountDontHave": "Vous n'avez pas de compte ?",
-  "accountHave": "Vous avez un compte ?"
+  "accountHave": "Vous avez un compte ?",
+  "profileDetails": "Détails du profil",
+  "loginSuccessful": "Connexion réussie",
+  "loggingIn": "Connexion en cours...",
+  "creatingUser": "Creating user..."
 }

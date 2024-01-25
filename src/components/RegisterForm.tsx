@@ -9,9 +9,11 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useTranslation } from "react-i18next";
 import toast, { Toaster } from 'react-hot-toast';
+import { useState } from "react";
 
 const RegisterForm = () => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false)
 
   const schema = z
     .object({
@@ -43,6 +45,7 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema)
@@ -57,6 +60,8 @@ const RegisterForm = () => {
   } = useAuthStore();
 
   const onSubmit = async (data: any) => {
+    setLoading(true);
+    reset()
     try {
       const response = await createUserWithEmailAndPassword(
         auth,
@@ -69,13 +74,19 @@ const RegisterForm = () => {
           userName: data.username,
           country: data.country,
         });
+        setLoading(false)
         console.log("Document written with ID: ", docRef.id); //TODO - Add toast message whereever console or error message
+        toast.success('Account created successfully')
       } catch (error) {
+        debugger
+        setLoading(false)
         toast.error(t('USER_CREATION_NOT_SUCCESSFUL'))
         console.error("Error adding document: ", error);
       }
     } catch (error:any) {
-      toast.error(t('USER_CREATION_FAILED'))
+      debugger
+      setLoading(false)
+      toast.error(error.message.includes('email-already-in-use') ? t('EMAIL_EXISTS') : t('USER_CREATION_FAILED'))
       console.error("Registration fail", error.message);
     }
     // registerUser();
@@ -87,14 +98,14 @@ const RegisterForm = () => {
         className="bg-white p-8 shadow-md rounded-lg sm:w-400 md:w-400 lg:w-400 xl:w-400 w-full"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">{t('register')}</h2>
         <Toaster/>
         <div className="mb-4">
           <label
             htmlFor="username"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            {t('userName')}
+            {t('username')}
           </label>
           <input
             type="text"
@@ -156,7 +167,7 @@ const RegisterForm = () => {
             defaultValue={country}
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           >
-            <option value="">Select Country</option>
+            <option value="">{t('selectCountry')}</option>
             <option id="AE" value="AE">
               UAE
             </option>
@@ -175,8 +186,9 @@ const RegisterForm = () => {
           <button
             type="submit"
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            disabled={loading}
           >
-            {t('register')}
+            {loading? t('creatingUser') : t('register')}
           </button>
         </div>
       </form>

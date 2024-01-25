@@ -62,7 +62,10 @@ const LoginForm = () => {
           userName: !isEmail ? emailOrUserName : "",
           email: isEmail ? emailOrUserName: ""
         })
-        navigate('/profile')
+        toast.success(t('loginSuccessful'))
+        setTimeout(()=>{
+          navigate('/profile')
+        }, 2500)
       } else {
         console.error("Unexpected response:", response);
         toast.error(t("Unexpected response:", response))
@@ -76,6 +79,7 @@ const LoginForm = () => {
   }
 
   const onSubmit = async (data:any) => { //TODO - Pass data as arg and use inside the onSubmit
+    setLoading(true)
     const isEmail = data.emailOrUserName.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/) ? true: false
     if(isEmail) {
       siginInWithEmail(data, true)
@@ -154,8 +158,9 @@ const LoginForm = () => {
           <button
             type="submit"
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            disabled={loading}
           >
-            {t('login')}
+            {loading? t('loggingIn') : t('login')}
           </button> {/* disable button on progress */}
         </div>
       </form>

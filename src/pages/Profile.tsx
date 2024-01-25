@@ -6,7 +6,6 @@ import { db } from '../../firebase';
 import { useAuthStore } from '../store/useAuthStore';
 import toast, {Toaster} from 'react-hot-toast'
 import { useTranslation } from "react-i18next";
-
 interface UserData {
   [key: string]: string;
 }
@@ -42,7 +41,7 @@ const ProfilePage: React.FC = () => {
       <Header />
       <div className="flex min-h-screen bg-gray-100 overflow-x-hidden relative md:w-full">
         <div className="w-1/2 bg-white p-4 hidden md:flex flex-col items-center">
-          <h2 className="text-2xl font-bold mb-4">Profile Details</h2>
+          <h2 className="text-2xl font-bold mb-4">{t('profileDetails')}</h2>
           <Toaster />
           {Object.entries(userData).map(([key, value]) => (
             <div key={key} className="mb-2">

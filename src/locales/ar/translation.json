@@ -5,9 +5,15 @@
     "username": "اسم المستخدم",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
+    "country": "بلد",
+    "selectCountry": "اختر البلد",
     "register": "تسجيل",
     "login": "تسجيل الدخول",
     "passwordForgot": "نسيت كلمة المرور",
     "accountDontHave": "ليس لديك حساب؟",
-    "accountHave": "هل لديك حساب؟"
+    "accountHave": "هل لديك حساب؟",
+    "profileDetails": "تفاصيل الملف الشخصي",
+    "loginSuccessful": "تم تسجيل الدخول بنجاح",
+    "loggingIn": "تسجيل الدخول...",
+    "creatingUser": "Creating user..."
 }
