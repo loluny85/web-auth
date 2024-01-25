@@ -6,18 +6,23 @@ import { useAuthStore } from "../store/useAuthStore";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import toast from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
   const {theme} = useThemeStore()
   const {t} = useTranslation()
-  const {isAuthenticated} = useAuthStore()
+  const {signout: clearState, isAuthenticated} = useAuthStore()
+  const navigate = useNavigate()
 
   const signOutUser = async () => {
     try {
       await signOut(auth).then(()=>{
-        // TODO change isAuthenticated to false
-        // TODO navigate user to login page
+        clearState()
         toast.success(t('signedOut'))
+        sessionStorage.clear() // Clearing any persisted data
+        setTimeout(()=>{
+          navigate("/")
+        }, 1500)
       })
     } catch (err) {
       toast.error(t('SIGNOUT_FAILED'))

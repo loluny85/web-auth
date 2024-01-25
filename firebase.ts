@@ -32,7 +32,7 @@ const generateToken = async () => {
   console.log(permission)
   if(permission == "granted") {
     const token = await getToken(messaging, {
-      vapidKey: "BCUUiDMICafNFDp6qYLXTzwaY9EphGwQ0Ms1Pyt-pTopIKo9cDwnlHYlSd_9rmyp9AiLs2EUICS0AsYllP4QYBs"
+      vapidKey: "BDK7uSddhfoYIyFbW2rxcJxs716RFhd5cTjzhLDXnkBAnxsrtzz8A_OD-5Zg5-PH6NkK3uL6-Z6OL6Tbz0Wm3qY"
     })
     console.log(token)
   }

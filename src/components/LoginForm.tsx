@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { useAuthStore } from '../store/useAuthStore'; // Import your Zustand store
 import useThemeStore from '../store/useThemeStore';
 import { signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth";
-import { auth, generateToken, messaging } from "../../firebase";
+import { auth, generateToken, messaging, onMessageListener } from "../../firebase";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import {db} from '../../firebase';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { validations } from '../config/config';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
+import { IoIosGlobe } from "react-icons/io";
 
 const schema = z.object({
   // username: z.string(),
@@ -34,11 +35,20 @@ const LoginForm = () => {
 
   useEffect(()=>{
     generateToken()
-    onMessage(messaging, (payload) => {
-      alert(444444444)
-      toast("Hello World")
-    })
   },[])
+
+  onMessage(messaging, (payload) => {
+    console.log(payload)
+    toast(
+        <span>
+          <b>{payload.notification?.title}</b>
+          <div>{payload.notification?.body}</div>
+        </span>
+      ),
+      {
+        icon: <IoIosGlobe />,
+      }
+  })
 
   // TODO - clear form after submit
   // TODO - show signout button
@@ -65,7 +75,7 @@ const LoginForm = () => {
         toast.success(t('loginSuccessful'))
         setTimeout(()=>{
           navigate('/profile')
-        }, 2500)
+        }, 1500)
       } else {
         console.error("Unexpected response:", response);
         toast.error(t("Unexpected response:", response))

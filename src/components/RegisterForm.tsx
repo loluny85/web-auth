@@ -10,10 +10,14 @@ import { db } from "../../firebase";
 import { useTranslation } from "react-i18next";
 import toast, { Toaster } from 'react-hot-toast';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false)
+  const {register: createUser} = useAuthStore()
+
+  const navigate = useNavigate()
 
   const schema = z
     .object({
@@ -76,9 +80,17 @@ const RegisterForm = () => {
           userName: data.username,
           country: data.country,
         });
+        createUser({
+          username: data.username,
+          email: data.email,
+          country: data.country
+        })
         setLoading(false)
         console.log("Document written with ID: ", docRef.id); //TODO - Add toast message whereever console or error message
         toast.success('Account created successfully')
+        setTimeout(()=>{
+          navigate('/profile')
+        }, 1500)
       } catch (error) {
         debugger
         setLoading(false)

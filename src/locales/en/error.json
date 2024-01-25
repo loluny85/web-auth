@@ -4,5 +4,6 @@
     "USER_CREATION_NOT_SUCCESSFUL": "User creation did not succeed",
     "USER_FETCH_FAILED": "Fetching user details failed",
     "EMAIL_EXISTS": "Email id already exists",
-    "RESET_PASSWORD_FAILED": "Reset password failed"
+    "RESET_PASSWORD_FAILED": "Reset password failed",
+    "SIGNOUT_FAILED": "Signout failed"
 }

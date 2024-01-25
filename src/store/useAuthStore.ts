@@ -7,8 +7,9 @@ type TState = {
   email: string;
   password: string;
   country: string;
-  login: () => void;
-  register: () => void;
+  login: (data: any) => void;
+  register: (data: any) => void;
+  signout: () => void;
 };
 
 const useAuthStore = create<TState>(persist((set) => ({
@@ -17,8 +18,13 @@ const useAuthStore = create<TState>(persist((set) => ({
   email: '',
   password: '',
   country: '',
-  register: () => {
-    // console.log('Registration logic:');
+  register: (data: any) => {
+    set({
+      isAuthenticated: true,
+      email:data.email,
+      username: data.userName,
+      country: data.country
+    })
   },
   login: (data: any) => {
     set({
@@ -27,6 +33,15 @@ const useAuthStore = create<TState>(persist((set) => ({
       username: data.userName
     })
   },
+  signout: () => {
+    set({
+      isAuthenticated: false,
+      username: '',
+      email: '',
+      password: '',
+      country: '',
+    })
+  }
 }),{
   name: "auth store",
   storage: createJSONStorage(()=>sessionStorage)
