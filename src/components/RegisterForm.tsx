@@ -59,6 +59,8 @@ const RegisterForm = () => {
     register: registerUser,
   } = useAuthStore();
 
+  // TODO signout
+
   const onSubmit = async (data: any) => {
     setLoading(true);
     reset()
@@ -168,15 +170,11 @@ const RegisterForm = () => {
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           >
             <option value="">{t('selectCountry')}</option>
-            <option id="AE" value="AE">
-              UAE
-            </option>
-            <option id="IN" value="IN">
-              India
-            </option>
-            <option id="FR" value="FR">
-              France
-            </option>
+            {Object.keys(validations).map((code) => (
+              <option key={code} value={code} id={code}>
+                {validations[code].country}
+              </option>
+            ))}
           </select>
           <span className="text-red-500">
             {errors.country?.message && <>{errors.password?.message}</>}

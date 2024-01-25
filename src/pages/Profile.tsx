@@ -44,8 +44,9 @@ const ProfilePage: React.FC = () => {
           <h2 className="text-2xl font-bold mb-4">{t('profileDetails')}</h2>
           <Toaster />
           {Object.entries(userData).map(([key, value]) => (
-            <div key={key} className="mb-2">
-              <strong className="text-gray-700">{key}:</strong> {value}
+            <div key={key} className="mb-2 flex">
+              <div><strong className="text-gray-700">{key}:</strong></div> 
+              <div>{value}</div>
             </div>
           ))}
         </div>

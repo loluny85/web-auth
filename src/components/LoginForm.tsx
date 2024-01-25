@@ -109,20 +109,6 @@ const LoginForm = () => {
         <h2 className={`${theme.titleFontSize} font-bold mb-4 text-center`}>{t('login')}</h2>
         <div className="mb-4">
           <Toaster/>
-          {/* <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2" style={{color: theme?.primaryColor}}>
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            placeholder='Username or email'
-            {...register('username')}
-            defaultValue={username}
-            className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
-          />
-          <span className="text-red-500">
-            {errors.username?.message && <>{errors.username?.message}</>}
-          </span> */}
         </div>
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -161,7 +147,7 @@ const LoginForm = () => {
             disabled={loading}
           >
             {loading? t('loggingIn') : t('login')}
-          </button> {/* disable button on progress */}
+          </button> {/* disable button on progress on all pages*/}
         </div>
       </form>
     </div>

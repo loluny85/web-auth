@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { IoIosGlobe } from "react-icons/io";
 import useThemeStore from "../store/useThemeStore";
 import { ThemeKey } from "../config/themes";
+import {languageOptions} from '../config/config'
 
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
@@ -12,12 +13,6 @@ function LanguageSwitcher() {
     setTheme(lng);
     setIsRtl(lng)
   };
-
-  const languageOptions = [
-    { code: "en", label: "English" },
-    { code: "fr", label: "Français" },
-    { code: "ar", label: "عربي" }
-  ];
 
   return (
     <div className="flex">
