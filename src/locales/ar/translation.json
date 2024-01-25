@@ -15,5 +15,8 @@
     "profileDetails": "تفاصيل الملف الشخصي",
     "loginSuccessful": "تم تسجيل الدخول بنجاح",
     "loggingIn": "تسجيل الدخول...",
-    "creatingUser": "Creating user..."
+    "creatingUser": "إنشاء المستخدم...",
+    "checkYourEmail": "تحقق من بريدك الإلكتروني",
+    "enterEmail": "أدخل البريد الإلكتروني",
+    "resetPassword": "إعادة تعيين كلمة المرور"
 }

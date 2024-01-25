@@ -15,5 +15,8 @@
   "profileDetails": "Détails du profil",
   "loginSuccessful": "Connexion réussie",
   "loggingIn": "Connexion en cours...",
-  "creatingUser": "Creating user..."
+  "creatingUser": "Création de l'utilisateur...",
+  "checkYourEmail": "Vérifiez votre e-mail",
+  "enterEmail": "Entrez l'adresse e-mail",
+  "resetPassword": "Réinitialiser le mot de passe"
 }

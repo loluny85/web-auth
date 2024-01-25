@@ -15,5 +15,8 @@
     "profileDetails": "Profile Details",
     "loginSuccessful": "Login Successful",
     "loggingIn": "Logging in...",
-    "creatingUser": "Creating user..."
+    "creatingUser": "Creating user...",
+    "checkYourEmail": "Check your email",
+    "enterEmail": "Enter email",
+    "resetPassword": "Reset password"
 }

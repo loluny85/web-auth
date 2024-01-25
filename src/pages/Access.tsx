@@ -7,20 +7,28 @@ import { useAuthStore } from "../store/useAuthStore";
 import Header from "../components/Header";
 import { SiAuthelia } from "react-icons/si";
 import useThemeStore from "../store/useThemeStore";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../../firebase";
+import ResetPasswordForm from '../components/ResetPasswordForm'
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
   const { isAuthenticated } = useAuthStore();
   const { t } = useTranslation();
   const { theme } = useThemeStore();
+  const [resetPassword, setResetPassword] = useState(false)
+
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
 
+  const handleResetPassword = () => {
+    setResetPassword(true)
+  }
+
   return (
     <>
       <Header />
-
       <div className="flex min-h-screen bg-gray-100 overflow-x-hidden relative md:w-full">
         <div
           className={`w-1/2 bg-gradient-to-r ${theme.bodyBackground} to-transparent p-4 hidden md:block`}
@@ -31,15 +39,20 @@ function App() {
           <div className="space-x-4 mt-4 w-full p-4">
             {isLogin ? (
               <div className="flex justify-between">
-                <button
-                  className={`text-blue-500 underline ${
-                    isLogin ? "" : "opacity-50"
-                  }`}
-                  // onClick={toggleForm}
-                  disabled={!isLogin}
-                >
-                  {t("passwordForgot")}
-                </button>
+                <div>
+                  <button
+                    className={`text-blue-500 underline ${
+                      isLogin ? "" : "opacity-50"
+                    }`}
+                    onClick={handleResetPassword}
+                    disabled={!isLogin}
+                  >
+                    {t("passwordForgot")}
+                  </button>
+                  {
+                    resetPassword ? <ResetPasswordForm /> : null
+                  }
+                </div>
                 <div>
                   {t("accountDontHave")} &nbsp;
                   <button
