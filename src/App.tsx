@@ -13,9 +13,6 @@ type TStateProps = {
 const App: React.FC = () => {
   const isAuthenticated = useAuthStore((state: TStateProps) => state.isAuthenticated);
   const {isRtl} = useThemeStore()
-  // TODO - error boundary
-  // TODO - debounce the API call
-  // TODO - Unit tests
 
   return (
     <div dir={isRtl ? 'rtl' : 'ltr'}>

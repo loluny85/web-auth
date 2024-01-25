@@ -50,14 +50,9 @@ const LoginForm = () => {
       }
   })
 
-  // TODO - clear form after submit
-  // TODO - show signout button
-
   const {theme} = useThemeStore()
 
   const { username, email, password, login } = useAuthStore();
-
-  // TODO - Do Push notification
 
   const siginInWithEmail = async (data:any, isEmail:boolean) => {
     const {emailOrUserName, password} = data
@@ -88,7 +83,7 @@ const LoginForm = () => {
     }
   }
 
-  const onSubmit = async (data:any) => { //TODO - Pass data as arg and use inside the onSubmit
+  const onSubmit = async (data:any) => {
     setLoading(true)
     const isEmail = data.emailOrUserName.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/) ? true: false
     if(isEmail) {

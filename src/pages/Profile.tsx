@@ -34,8 +34,6 @@ const ProfilePage: React.FC = () => {
     }
   };
 
-  // TODO - create an enum for country
-
   return (
     <>
       <Header />

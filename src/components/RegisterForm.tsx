@@ -63,8 +63,6 @@ const RegisterForm = () => {
     register: registerUser,
   } = useAuthStore();
 
-  // TODO signout
-
   const onSubmit = async (data: any) => {
     setLoading(true);
     reset()
@@ -86,7 +84,7 @@ const RegisterForm = () => {
           country: data.country
         })
         setLoading(false)
-        console.log("Document written with ID: ", docRef.id); //TODO - Add toast message whereever console or error message
+        console.log("Document written with ID: ", docRef.id);
         toast.success('Account created successfully')
         setTimeout(()=>{
           navigate('/profile')
