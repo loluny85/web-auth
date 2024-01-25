@@ -1,14 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { IoIosGlobe } from "react-icons/io";
-import useThemeStore from "./store/useThemeStore";
-import { ThemeKey } from "./config/themes";
+import useThemeStore from "../store/useThemeStore";
+import { ThemeKey } from "../config/themes";
 
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const { setTheme, setIsRtl } = useThemeStore();
 
   const changeLanguage = (lng: ThemeKey) => {
-    debugger
     i18n.changeLanguage(lng);
     setTheme(lng);
     setIsRtl(lng)

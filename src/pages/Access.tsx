@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
+import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "./LangSwitcher";
-import { useAuthStore } from "./store/useAuthStore";
-import Header from "./Header";
+import LanguageSwitcher from "../components/LangSwitcher";
+import { useAuthStore } from "../store/useAuthStore";
+import Header from "../components/Header";
 import { SiAuthelia } from "react-icons/si";
-import useThemeStore from "./store/useThemeStore";
+import useThemeStore from "../store/useThemeStore";
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);

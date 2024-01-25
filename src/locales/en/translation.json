@@ -8,6 +8,5 @@
     "register": "Register",
     "login": "Login",
     "passwordForgot": "Forgot password",
-    "accountDontHave": "Don't have an account?",
-    "accountHave": "Have an account?"
+    "accountDontHave": "Don't have an account?"
 }

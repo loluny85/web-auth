@@ -1,16 +1,16 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useAuthStore } from './store/useAuthStore'; // Import your Zustand store
-import useThemeStore from './store/useThemeStore';
+import { useAuthStore } from '../store/useAuthStore'; // Import your Zustand store
+import useThemeStore from '../store/useThemeStore';
 import { signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth";
-import { auth, generateToken, messaging } from "../firebase";
+import { auth, generateToken, messaging } from "../../firebase";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-import {db} from '../firebase';
+import {db} from '../../firebase';
 import { useEffect, useState } from 'react';
 import { onMessage } from 'firebase/messaging';
 import toast, { Toaster } from 'react-hot-toast';
-import { validations } from './config/config';
+import { validations } from '../config/config';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 
@@ -64,10 +64,12 @@ const LoginForm = () => {
         })
         navigate('/profile')
       } else {
-        console.log("Unexpected response:", response);
+        console.error("Unexpected response:", response);
+        toast.error(t("Unexpected response:", response))
       }
     } catch (error:any) {
       // Handle the authentication error
+      toast.error(t('INVALID_LOGIN_CREDENTIALS'))
       console.error("Authentication error:", error.message);
       setLoading(false)
     }

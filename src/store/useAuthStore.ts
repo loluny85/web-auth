@@ -21,7 +21,6 @@ const useAuthStore = create<TState>(persist((set) => ({
     // console.log('Registration logic:');
   },
   login: (data: any) => {
-    debugger
     set({
       isAuthenticated: true,
       email:data.email,

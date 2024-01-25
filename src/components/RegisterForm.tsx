@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useAuthStore } from "./store/useAuthStore"; // Import your Zustand store
-import { validations } from "./config/config";
+import { useAuthStore } from "../store/useAuthStore"; // Import your Zustand store
+import { validations } from "../config/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 import { useTranslation } from "react-i18next";
+import toast, { Toaster } from 'react-hot-toast';
 
 const RegisterForm = () => {
   const { t } = useTranslation();
@@ -62,7 +63,6 @@ const RegisterForm = () => {
         data.email,
         data.password
       );
-      console.log(response);
       try {
         const docRef = await addDoc(collection(db, "users"), {
           email: data.email,
@@ -70,11 +70,13 @@ const RegisterForm = () => {
           country: data.country,
         });
         console.log("Document written with ID: ", docRef.id); //TODO - Add toast message whereever console or error message
-      } catch (e) {
-        console.error("Error adding document: ", e);
+      } catch (error) {
+        toast.error(t('USER_CREATION_NOT_SUCCESSFUL'))
+        console.error("Error adding document: ", error);
       }
-    } catch (error) {
-      console.log("reg err - ", error);
+    } catch (error:any) {
+      toast.error(t('USER_CREATION_FAILED'))
+      console.error("Registration fail", error.message);
     }
     // registerUser();
   };
@@ -86,6 +88,7 @@ const RegisterForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+        <Toaster/>
         <div className="mb-4">
           <label
             htmlFor="username"

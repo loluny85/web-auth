@@ -1,6 +1,6 @@
 import LanguageSwitcher from "./LangSwitcher";
 import { SiAuthelia } from "react-icons/si";
-import useThemeStore from './store/useThemeStore';
+import useThemeStore from '../store/useThemeStore';
 
 function Header() {
     const {theme} = useThemeStore()

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
-import AccessPage from "./AccessPage";
-import Profile from "./Profile";
-import ProtectedRoute from "./ProtectedRoute";
+import AccessPage from "./pages/Access";
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
 import './config/i18n';
 import useThemeStore from "./store/useThemeStore";
 
