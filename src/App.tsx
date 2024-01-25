@@ -4,6 +4,7 @@ import AccessPage from "./AccessPage";
 import Profile from "./Profile";
 import ProtectedRoute from "./ProtectedRoute";
 import './config/i18n';
+import useThemeStore from "./store/useThemeStore";
 
 type TStateProps = {
   isAuthenticated: boolean;
@@ -11,12 +12,13 @@ type TStateProps = {
 
 const App: React.FC = () => {
   const isAuthenticated = useAuthStore((state: TStateProps) => state.isAuthenticated);
+  const {isRtl} = useThemeStore()
   // TODO - error boundary
   // TODO - debounce the API call
   // TODO - Unit tests
-  // TODO - add theme
 
   return (
+    <div dir={isRtl ? 'rtl' : 'ltr'}>
     <Router>
         <Routes>
           <Route path="/" element={<AccessPage />} />
@@ -31,6 +33,7 @@ const App: React.FC = () => {
           <Route path="*" element={<AccessPage />} />
         </Routes>
     </Router>
+    </div>
   );
 };
 

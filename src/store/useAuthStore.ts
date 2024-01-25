@@ -20,9 +20,12 @@ const useAuthStore = create<TState>(persist((set) => ({
   register: () => {
     // console.log('Registration logic:');
   },
-  login: () => {
+  login: (data: any) => {
+    debugger
     set({
-      isAuthenticated: true
+      isAuthenticated: true,
+      email:data.email,
+      username: data.userName
     })
   },
 }),{

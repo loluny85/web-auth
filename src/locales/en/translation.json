@@ -1,4 +1,13 @@
-{
-    "register": "Register"
+{  
+    "userNameShort": "Username too long",
+    "userNameLong": "Username too short",
+    "userNameIncorrectFormat": "Username not per correct format",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "register": "Register",
+    "login": "Login",
+    "passwordForgot": "Forgot password",
+    "accountDontHave": "Don't have an account?",
+    "accountHave": "Have an account?"
 }
-  

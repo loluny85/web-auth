@@ -6,7 +6,8 @@ type TProtectedRouteProps = {
     children: ReactNode
 }
 
-const ProtectedRoute: React.FC<TProtectedRouteProps> = ({ isAuthenticated, children }) => 
-    !isAuthenticated ? <Navigate to="/" replace /> : children
+const ProtectedRoute: React.FC<TProtectedRouteProps> = ({ isAuthenticated, children }) => {
+    return !isAuthenticated ? <Navigate to="/" replace /> : children
+}
 
 export default ProtectedRoute;

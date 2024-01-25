@@ -1,6 +1,7 @@
 type ValidationConfig = {
     lang: string; // Language code for the validation configuration.
     userNameMinChars: number; // Minimum number of characters allowed for a username.
+    validRegex: string | any;
 };
 
 type ValidationConfigs = {
@@ -11,10 +12,17 @@ type ValidationConfigs = {
 export const validations: ValidationConfigs = {
     IN: {
         lang: 'en',
-        userNameMinChars: 5
+        userNameMinChars: 5,
+        validRegex: /^[Ii][a-zA-Z]*$/
     },
     FR: {
         lang: 'fr',
-        userNameMinChars: 6
+        userNameMinChars: 6,
+        validRegex: /^FR[a-zA-Z0-9%_]*$/
+    },
+    AE: {
+        lang: 'ar',
+        userNameMinChars: 8,
+        validRegex: /^[a-zA-Z0-9]+$/
     }
 };

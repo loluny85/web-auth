@@ -1,0 +1,13 @@
+{
+    "userNameShort": "اسم المستخدم طويل جدًا",
+    "userNameLong": "اسم المستخدم قصير جدًا",
+    "userNameIncorrectFormat": "تنسيق اسم المستخدم غير صحيح",
+    "username": "اسم المستخدم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "register": "تسجيل",
+    "login": "تسجيل الدخول",
+    "passwordForgot": "نسيت كلمة المرور",
+    "accountDontHave": "ليس لديك حساب؟",
+    "accountHave": "هل لديك حساب؟"
+}

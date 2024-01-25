@@ -1,10 +1,13 @@
 // config/themes.ts
 
-export type ThemeKey = 'default' | 'en' | 'fr';
+export type ThemeKey = 'default' | 'en' | 'fr' | 'ar';
 
 export type Theme = {
   primaryColor: string;
   secondaryColor: string;
+  headerBackground: string;
+  bodyBackground: string;
+  titleFontSize: string
 };
 
 type TThemesType = {
@@ -16,14 +19,30 @@ const themes: TThemesType = {
   default: {
     primaryColor: 'blue',
     secondaryColor: 'white',
+    headerBackground: 'bg-blue-500',
+    bodyBackground: `from-blue-500`,
+    titleFontSize: 'text-2xl'
   },
   en: {
     primaryColor: 'blue',
     secondaryColor: 'white',
+    headerBackground: 'bg-blue-500',
+    bodyBackground: `from-blue-500`,
+    titleFontSize: 'text-2xl'
   },
   fr: {
-    primaryColor: 'red',
-    secondaryColor: 'blue',
+    primaryColor: 'rose',
+    secondaryColor: 'white',
+    headerBackground: 'bg-rose-500',
+    bodyBackground: `from-rose-500`,
+    titleFontSize: 'text-3xl'
+  },
+  ar: {
+    primaryColor: 'green',
+    secondaryColor: 'white',
+    headerBackground: 'bg-green-500',
+    bodyBackground: `from-green-500`,
+    titleFontSize: 'text-xl'
   },
 };
 
