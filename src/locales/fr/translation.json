@@ -18,5 +18,6 @@
   "creatingUser": "Création de l'utilisateur...",
   "checkYourEmail": "Vérifiez votre e-mail",
   "enterEmail": "Entrez l'adresse e-mail",
-  "resetPassword": "Réinitialiser le mot de passe"
+  "resetPassword": "Réinitialiser le mot de passe",
+  "signedOut": "Déconnexion réussie"
 }

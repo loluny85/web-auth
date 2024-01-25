@@ -18,5 +18,6 @@
     "creatingUser": "Creating user...",
     "checkYourEmail": "Check your email",
     "enterEmail": "Enter email",
-    "resetPassword": "Reset password"
+    "resetPassword": "Reset password",
+    "signedOut": "Signed out successfully"
 }
