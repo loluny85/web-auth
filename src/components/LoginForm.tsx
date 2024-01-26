@@ -64,8 +64,7 @@ const LoginForm: React.FC = () => {
       setLoading(false);
       if (response && response.user) {
         login({
-          userName: !isEmail ? emailOrUserName : '',
-          email: isEmail ? emailOrUserName : '',
+          email: emailOrUserName
         });
         toast.success(t('loginSuccessful'));
         setTimeout(() => {
