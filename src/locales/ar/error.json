@@ -6,5 +6,6 @@
     "EMAIL_EXISTS": "عنوان البريد الإلكتروني موجود بالفعل.",
     "RESET_PASSWORD_FAILED": "فشلت إعادة تعيين كلمة المرور",
     "SIGNOUT_FAILED": "فشلت عملية الخروج",
-    "INVALID_EMAIL": "بريد إلكتروني غير صالح"
+    "INVALID_EMAIL": "بريد إلكتروني غير صالح",
+    "USERNAME_NOT_FOUND": "اسم المستخدم غير موجود"
 }

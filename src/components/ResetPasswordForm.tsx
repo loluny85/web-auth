@@ -38,7 +38,6 @@ const LoginForm: React.FC = () => {
     } catch (err) {
       setLoading(false);
       toast.error(t('RESET_PASSWORD_FAILED'));
-      console.error('Reset password failed');
     }
   };
 

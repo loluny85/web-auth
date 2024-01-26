@@ -29,7 +29,6 @@ const ProfilePage: React.FC = () => {
         }
       });
     } catch(error: any) {
-        console.error(t('USER_FETCH_FAILED'));
         toast.error(t('USER_FETCH_FAILED'))
     }
   };

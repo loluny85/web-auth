@@ -6,5 +6,6 @@
     "EMAIL_EXISTS": "L'adresse e-mail existe déjà.",
     "RESET_PASSWORD_FAILED": "Échec de la réinitialisation du mot de passe",
     "SIGNOUT_FAILED": "Échec de la déconnexion",
-    "INVALID_EMAIL": "Adresse e-mail invalide"
+    "INVALID_EMAIL": "Adresse e-mail invalide",
+    "USERNAME_NOT_FOUND": "Nom d'utilisateur introuvable"
 }

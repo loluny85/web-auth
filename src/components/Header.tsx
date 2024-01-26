@@ -17,17 +17,15 @@ const Header: React.FC = (): JSX.Element => {
 
   const signOutUser = async (): Promise<void> => {
     try {
-      await signOut(auth).then(() => {
-        clearState();
-        toast.success(t('signedOut'));
-        sessionStorage.clear(); // Clearing any persisted data
-        setTimeout(() => {
-          navigate('/');
-        }, 1500);
-      });
+      await signOut(auth);
+      clearState();
+      toast.success(t('signedOut'));
+      sessionStorage.clear(); // Clearing any persisted data
+      setTimeout(() => {
+        navigate('/');
+      }, 1500);
     } catch (err) {
       toast.error(t('SIGNOUT_FAILED'));
-      console.error('signout failed');
     }
   };
 

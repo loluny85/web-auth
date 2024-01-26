@@ -40,7 +40,6 @@ const LoginForm: React.FC = () => {
   }, []);
 
   onMessage(messaging, (payload) => {
-    console.log(payload);
     toast(
       <span>
         <b>{payload.notification?.title}</b>
@@ -61,7 +60,6 @@ const LoginForm: React.FC = () => {
       const response = await signInWithEmailAndPassword(auth, emailOrUserName, password);
       setLoading(false);
       if (response && response.user) {
-        console.log('Login successful:', response.user);
         login({
           userName: !isEmail ? emailOrUserName : '',
           email: isEmail ? emailOrUserName : '',
@@ -71,13 +69,11 @@ const LoginForm: React.FC = () => {
           navigate('/profile');
         }, 1500);
       } else {
-        console.error('Unexpected response:', response);
         const errorMessage = response instanceof Error ? response.message : 'Unknown error';
         toast.error(errorMessage);
       }
     } catch (error: any) {
       toast.error(t('INVALID_LOGIN_CREDENTIALS'));
-      console.error('Authentication error:', error.message);
       setLoading(false);
     }
   };
@@ -104,7 +100,7 @@ const LoginForm: React.FC = () => {
         }
       });
       if (!isMatchFound) {
-        alert('No matching username found.');
+        toast.error(t('USERNAME_NOT_FOUND'));
       }
     }
   };

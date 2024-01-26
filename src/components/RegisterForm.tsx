@@ -86,7 +86,6 @@ const RegisterForm: React.FC = () => {
           country: data.country,
         });
         setLoading(false);
-        console.log('Document written with ID: ', docRef.id);
         registerUser({
           isAuthenticated: true,
           email: data.email,
@@ -100,14 +99,12 @@ const RegisterForm: React.FC = () => {
       } catch (error) {
         setLoading(false);
         toast.error(t('USER_CREATION_NOT_SUCCESSFUL'));
-        console.error('Error adding document: ', error);
       }
     } catch (error: any) {
       setLoading(false);
       toast.error(
         error.message.includes('email-already-in-use') ? t('EMAIL_EXISTS') : t('USER_CREATION_FAILED')
       );
-      console.error('Registration fail', error.message);
     }
   };
 
