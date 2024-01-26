@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAuthStore } from '../store/useAuthStore';
-import { validations } from '../config/config';
+import { MIN_PASSWORD_LENGTH, validations } from '../config/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -19,6 +19,42 @@ interface FormData {
   country: string;
 }
 
+const schema = z
+    .object({
+      username: z.string(),
+      email: z.string(),
+      password: z.string(),
+      country: z.string().min(1),
+    })
+    .refine(data => data.password.length >= MIN_PASSWORD_LENGTH, {
+      path: ['password'],
+      message: 'PASSWORD_TOO_SHORT',
+    })
+    .refine(
+      (data) => data.username.length >= validations[data.country].userNameMinChars,
+      {
+        path: ['username'],
+        message: 'USERNAME_TOO_SHORT_MIN_CHARS',
+      }
+    )
+    .refine((data) => data.username.length <= 15, {
+      path: ['username'],
+      message: 'USERNAME_TOO_LONG',
+    })
+    .refine(
+      (data) => !!data.username.match(validations[data.country].validRegex),
+      {
+        path: ['username'],
+        message: 'userNameIncorrectFormat',
+      }
+    ).refine(
+      (data) => data.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),
+      {
+        path: ['email'],
+        message: 'INVALID_EMAIL',
+      }
+    );
+
 const RegisterForm: React.FC = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
@@ -26,43 +62,12 @@ const RegisterForm: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const schema = z
-    .object({
-      username: z.string(),
-      email: z.string(),
-      password: z.string().min(8),
-      country: z.string().min(1),
-    })
-    .refine(
-      (data) => data.username.length >= validations[data.country].userNameMinChars,
-      {
-        path: ['username'],
-        message: t('shortUserName'),
-      }
-    )
-    .refine((data) => data.username.length <= 10, {
-      path: ['username'],
-      message: t('longUserName'),
-    })
-    .refine(
-      (data) => !!data.username.match(validations[data.country].validRegex),
-      {
-        path: ['username'],
-        message: t('userNameIncorrectFormat'),
-      }
-    ).refine(
-      (data) => !!data.email,
-      {
-        path: ['email'],
-        message: t('INVALID_EMAIL'),
-      }
-    );
-
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
+    getValues
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -127,9 +132,7 @@ const RegisterForm: React.FC = () => {
             defaultValue={username}
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <span className="text-red-500">
-            {errors.username?.message && <>{errors.username?.message}</>}
-          </span>
+          <span className="text-red-500">{errors.username?.message && <>{t(errors.username?.message, {minLength: validations[getValues('country')]?.userNameMinChars})}</>}</span>
         </div>
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -142,9 +145,7 @@ const RegisterForm: React.FC = () => {
             defaultValue={email}
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <span className="text-red-500">
-            {errors.email?.message && <>{errors.email?.message}</>}
-          </span>
+          <span className="text-red-500">{errors.email?.message && <>{t(errors.email?.message)}</>}</span>
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
@@ -157,9 +158,7 @@ const RegisterForm: React.FC = () => {
             defaultValue={password}
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <span className="text-red-500">
-            {errors.password?.message && <>{errors.password?.message}</>}
-          </span>
+          <span className="text-red-500">{errors.password?.message && <>{t(errors.password?.message, {minLength: MIN_PASSWORD_LENGTH})}</>}</span>
         </div>
         <div className="mb-4">
           <label htmlFor="country" className="block text-gray-700 text-sm font-bold mb-2">

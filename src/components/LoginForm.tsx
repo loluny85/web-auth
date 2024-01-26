@@ -13,7 +13,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { IoIosGlobe } from 'react-icons/io';
-
+import { MIN_PASSWORD_LENGTH, MIN_USERNAME_LENGTH } from '../config/config';
 interface FormData {
   emailOrUserName: string;
   password: string;
@@ -21,11 +21,14 @@ interface FormData {
 
 const schema = z.object({
   emailOrUserName: z.string(),
-  password: z.string().min(8),
-}).refine((data) => data.emailOrUserName.length >= 6, {
+  password: z.string(),
+}).refine((data) => data.emailOrUserName.length >= MIN_USERNAME_LENGTH, {
   path: ['emailOrUserName'],
-  message: 'Username too short',
-});
+  message: 'USERNAME_TOO_SHORT'
+}).refine((data) => data.password.length >= MIN_PASSWORD_LENGTH, {
+  path: ['password'],
+  message: 'PASSWORD_TOO_SHORT'
+})
 
 const LoginForm: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -121,9 +124,10 @@ const LoginForm: React.FC = () => {
             id="emailOrUserName"
             {...register('emailOrUserName')}
             defaultValue={email}
+            placeholder="Email or Username"
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <span className="text-red-500">{errors.emailOrUserName?.message && <>{errors.emailOrUserName?.message}</>}</span>
+          <span className="text-red-500">{errors.emailOrUserName?.message && <>{t(errors.emailOrUserName?.message)}</>}</span>
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
@@ -136,7 +140,7 @@ const LoginForm: React.FC = () => {
             defaultValue={password}
             className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <span className="text-red-500">{errors.password?.message && <>{errors.password?.message}</>}</span>
+          <span className="text-red-500">{errors.password?.message && <>{t(errors.password?.message, {minLength: MIN_PASSWORD_LENGTH})}</>}</span>
         </div>
         <div className="text-center">
           <button
