@@ -30,6 +30,8 @@ Follow these steps to run the application locally:
     npm run dev
     ```
 
+    Ideal to have Node 18 and above for installation
+
 ## Firebase Configuration
 
 The app is configured to use Firebase for user authentication and Firestore to store user information. Ensure that your Firebase configuration is correctly set up.
@@ -45,6 +47,9 @@ The app is configured to use Firebase for user authentication and Firestore to s
 ## RTL Support
 
 The application supports Right-to-Left (RTL) layout for languages like Arabic.
+
+## Push Notifications
+Demo video available at https://drive.google.com/file/d/1-ujdEh6qLer424cDobX1MADmEEhBgXA_/view?usp=drive_link
 
 ## Contributing
 
