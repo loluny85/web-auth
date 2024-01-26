@@ -19,5 +19,6 @@
     "checkYourEmail": "Check your email",
     "enterEmail": "Enter email",
     "resetPassword": "Reset password",
-    "signedOut": "Signed out successfully"
+    "signedOut": "Signed out successfully",
+    "sendingEmail": "Sending Email..."
 }

@@ -5,5 +5,6 @@
     "USER_FETCH_FAILED": "فشل جلب تفاصيل المستخدم",
     "EMAIL_EXISTS": "عنوان البريد الإلكتروني موجود بالفعل.",
     "RESET_PASSWORD_FAILED": "فشلت إعادة تعيين كلمة المرور",
-    "SIGNOUT_FAILED": "فشلت عملية الخروج"
+    "SIGNOUT_FAILED": "فشلت عملية الخروج",
+    "INVALID_EMAIL": "بريد إلكتروني غير صالح"
 }

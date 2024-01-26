@@ -5,5 +5,6 @@
     "USER_FETCH_FAILED": "Fetching user details failed",
     "EMAIL_EXISTS": "Email id already exists",
     "RESET_PASSWORD_FAILED": "Reset password failed",
-    "SIGNOUT_FAILED": "Signout failed"
+    "SIGNOUT_FAILED": "Signout failed",
+    "INVALID_EMAIL": "Invalid email"
 }

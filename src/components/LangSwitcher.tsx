@@ -1,17 +1,17 @@
-import { useTranslation } from "react-i18next";
-import { IoIosGlobe } from "react-icons/io";
-import useThemeStore from "../store/useThemeStore";
-import { ThemeKey } from "../config/themes";
-import {languageOptions} from '../config/config'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import useThemeStore from '../store/useThemeStore';
+import { ThemeKey } from '../config/themes';
+import { languageOptions } from '../config/config';
 
-function LanguageSwitcher() {
+const LanguageSwitcher: React.FC = (): JSX.Element => {
   const { i18n } = useTranslation();
   const { setTheme, setIsRtl } = useThemeStore();
 
-  const changeLanguage = (lng: ThemeKey) => {
+  const changeLanguage = (lng: ThemeKey): void => {
     i18n.changeLanguage(lng);
     setTheme(lng);
-    setIsRtl(lng)
+    setIsRtl(lng);
   };
 
   return (
@@ -30,6 +30,6 @@ function LanguageSwitcher() {
       </select>
     </div>
   );
-}
+};
 
 export default LanguageSwitcher;

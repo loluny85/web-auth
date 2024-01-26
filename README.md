@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Web Auth App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web Auth is a React web application that allows users to create an account, log in, and view their profile details. The app supports multiple languages and features a global web push notification system.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these steps to run the application locally:
 
-## Expanding the ESLint configuration
+1. Clone the repository:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    ```bash
+    git clone <github-repo-url>
+    ```
 
-- Configure the top-level `parserOptions` property like this:
+2. Navigate to the project directory:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+    ```bash
+    cd web-auth
+    ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+## Firebase Configuration
+
+The app is configured to use Firebase for user authentication and Firestore to store user information. Ensure that your Firebase configuration is correctly set up.
+
+## Features
+
+- **Account Creation and Login:** Users can create an account or log in if an account already exists.
+- **Profile Page:** After account creation or login, users are navigated to their profile page to view their details.
+- **Password Reset:** Users can reset their password by providing their email. A reset link is sent to the email for password change.
+- **Multiple Languages:** The app supports multiple languages, and users can select their preferred language from the dropdown in the header.
+- **Web Push Notifications:** Administrators can send global web push notifications through the Firebase Messaging section.
+
+## RTL Support
+
+The application supports Right-to-Left (RTL) layout for languages like Arabic.
+
+## Contributing
+
+If you would like to contribute to the project, feel free to open issues or submit pull requests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
