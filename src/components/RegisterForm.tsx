@@ -80,7 +80,7 @@ const RegisterForm: React.FC = () => {
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
       try {
-        const docRef = await addDoc(collection(db, 'users'), {
+        await addDoc(collection(db, 'users'), {
           email: data.email,
           userName: data.username,
           country: data.country,

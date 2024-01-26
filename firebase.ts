@@ -29,7 +29,7 @@ export const onMessageListener = () =>
 const generateToken = async () => {
   const permission = await Notification.requestPermission()
   if(permission == "granted") {
-    const token = await getToken(messaging, {
+    await getToken(messaging, {
       vapidKey: import.meta.env.VITE_VAPID_KEY
     })
     // console.log(token)
